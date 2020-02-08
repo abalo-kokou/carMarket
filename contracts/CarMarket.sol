@@ -17,14 +17,22 @@ contract CarMarket {
      );
     // car list
     mapping (address => Car) public listCar;
-    uint public carCounter;
+    uint public _carCounter;
+
+    constructor(uint  ID, uint256 price) public {
+        Car memory  newCar;
+        newCar.owner = msg.sender // to retriever seller address
+        newCar.car_id = ID;
+        newCar.sell_price=price;
+   	}
+
     // to add a car
     function addCar(uint  ID, uint256 price ) public {
         Car memory  newCar;
         newCar.owner = msg.sender // to retriever seller address
         newCar.car_id = ID;
         newCar.sell_price=price;
-        carCounter++;
+        _carCounter++;
         listCar[carCounter] = newCar;
         emit LogAddCar(ID);
     }
