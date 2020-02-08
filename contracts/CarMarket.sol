@@ -1,6 +1,8 @@
 pragma solidity >=0.4.21 <0.7.0;
 
 contract CarMarket {
+   address payable public seller;
+   address payable public buyer;
     // car
     struct Car {
         address owner;
